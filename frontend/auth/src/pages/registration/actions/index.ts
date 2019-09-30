@@ -11,48 +11,46 @@ export const change = (field, value) => ({
 export const register = () => async (dispatch, getState, client) => {
   const { email, password } = getState().auth.registration
 
-    try {
-        const {data} = await client.mutate({
-            mutation: gql`
-              mutation Register($input: RegisterUserInput!) {
-                register(input: $input) {
-                  errors {
-                    email
-                    password
-                  }
-                }
+  try {
+    const {data} = await client.mutate({
+        mutation: gql`
+          mutation Register($input: RegisterUserInput!) {
+            register(input: $input) {
+              errors {
+                email
+                password
               }
-            `,
-            variables: {
-                input: {
-                    email,
-                    password,
-                },
+            }
+          }
+        `,
+        variables: {
+            input: {
+                email,
+                password,
             },
-        })
-        if (data.register.errors) {
-            dispatch({
-                type: actions.setErrors,
-                errors: data.register.errors,
-            })
-        } else {
-            dispatch({
-                type: actions.clear,
-            })
-        }
-    } catch (e) {
+        },
+    })
+    if (data.register.errors) {
         dispatch({
-            type: auth,
-            token: stub.token,
-            expiresIn: stub.expiresIn,
+            type: actions.setErrors,
+            errors: data.register.errors,
         })
-
+    } else {
         dispatch({
             type: actions.clear,
         })
     }
+  } catch (e) {
+    dispatch({
+        type: auth,
+        token: stub.token,
+        expiresIn: stub.expiresIn,
+    })
 
-
+    dispatch({
+        type: actions.clear,
+    })
+  }
 }
 
 export const clear = () => ({

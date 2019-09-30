@@ -1,0 +1,10 @@
+{
+  "name": "@aunited/profile",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "src/index.ts",
+  "peerDependencies": {
+    "react": "16.8.6",
+    "react-router-dom": "5.0.0"
+  }
+}

@@ -3,6 +3,7 @@ import { routerReducer as router } from 'react-router-redux'
 import security from '@aunited/common/src/reducers/security'
 import auth from '@aunited/auth/src/reducers'
 import users from '@aunited/users/src/reducers'
+import profile from '@aunited/profile/src/reducers'
 import config from './config'
 import locale from './locale'
 import me from './me'
@@ -12,6 +13,7 @@ export default combineReducers({
   config,
   locale,
   me,
+  profile,
   router,
   security,
   users,
