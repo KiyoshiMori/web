@@ -1,7 +1,6 @@
 import gql from 'graphql-tag'
-import { auth } from '@aunited/common/src/constants/security'
+import { auth, stub } from '@aunited/common/src/constants/security'
 import * as actions from '../constants'
-import stub from './stub'
 
 export const change = (field, value) => ({
   type: actions.change,

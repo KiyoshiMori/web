@@ -1,4 +1,5 @@
 import gql from 'graphql-tag'
+import { auth, stub } from '@aunited/common/src/constants/security'
 import * as actions from '../constants'
 
 export const change = (field, value) => ({
@@ -35,6 +36,12 @@ export const register = () => async (dispatch, getState, client) => {
       errors: data.register.errors,
     })
   } else {
+    dispatch({
+      type: auth,
+      token: stub.token,
+      expiresIn: stub.expiresIn,
+    })
+
     dispatch({
       type: actions.clear,
     })
