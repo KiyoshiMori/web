@@ -2,7 +2,6 @@
   "name": "test-web",
   "private": true,
   "workspaces": [
-    "backend/*",
     "frontend/*",
     "frontend/ui/*",
     "frontend/utils/*"
@@ -10,7 +9,7 @@
   "scripts": {
     "gateway:dev": "yarn workspace @backend/gateway dev",
     "typecheck": "lerna run typecheck",
-    "lint": "tslint --project tsconfig.json -c tslint.json -t codeFrame frontend/**/*.ts",
+    "lint": "tslint --exclude node_modules --project tsconfig.json -c tslint.json -t codeFrame frontend/**/*.ts",
     "frontend:dev": "yarn workspace @frontend/dashboard dev"
   },
   "devDependencies": {

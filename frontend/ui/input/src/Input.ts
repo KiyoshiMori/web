@@ -1,5 +1,6 @@
 import { createElement, KeyboardEvent } from 'react'
 import Wrapper from './Wrapper'
+import ErrorMsg from './ErrorMsg'
 import styled from '@emotion/styled'
 import { ifProp } from 'styled-tools'
 
@@ -28,7 +29,7 @@ export interface InputProps extends InputElementProps {
 const InputElement = styled('input', {
   shouldForwardProp: prop =>
     !['borderColor', 'error', 'transparent', 'select'].includes(prop),
-})<WrapperElementProps>(
+})<InputElementProps>(
   ({ color, borderColor, theme }) => ({
     width: '100%',
     height: 40,
@@ -101,6 +102,7 @@ const Input = ({
   type,
   disabled,
   value,
+  error,
   placeholder,
   readOnly,
   onChange,
@@ -111,25 +113,34 @@ const Input = ({
   createElement(
     Wrapper,
     {},
-    createElement(InputElement, {
-      id,
-      type,
-      disabled,
-      value,
-      placeholder,
-      readOnly,
-      onChange: ({ target }) => onChange(target.value),
-      onKeyPress: event => {
-        if (event.key === 'Enter' && onEnter) {
-          onEnter()
-        }
+    createElement(
+        InputElement,
+        {
+          id,
+          type,
+          disabled,
+          value,
+          error,
+          placeholder,
+          readOnly,
+          onChange: ({ target }) => onChange(target.value),
+          onKeyPress: event => {
+            if (event.key === 'Enter' && onEnter) {
+              onEnter()
+            }
 
-        if (onKeyPress) {
-          onKeyPress(event)
-        }
-      },
-      ...props,
-    })
+            if (onKeyPress) {
+              onKeyPress(event)
+            }
+          },
+          ...props,
+        },
+    ),
+    createElement(
+        ErrorMsg,
+      { error },
+        error
+    )
   )
 
 Input.defaultProps = {
