@@ -66,7 +66,7 @@ const InputElement = styled('input', {
     color: `${theme.colors.blueHaze}`,
   })),
   ifProp('error', ({ theme }: any) => ({
-    borderColor: `${theme.colors.red}`,
+    borderColor: `${theme.colors.red} !important`,
     [':hover']: {
       borderColor: `${theme.colors.red}`,
     },
@@ -75,7 +75,7 @@ const InputElement = styled('input', {
     },
   })),
   ifProp('warning', ({ theme }: any) => ({
-    borderColor: `${theme.colors.orange}`,
+    borderColor: `${theme.colors.orange} !important`,
     [':hover']: {
       borderColor: `${theme.colors.orange}`,
     },
