@@ -3,8 +3,10 @@
   "rules": {
     "quotemark": [true, "single"],
     "semicolon": [true, "never"],
+    "trailing-comma": false,
     "object-literal-sort-keys": false,
     "object-literal-key-quotes": [true, "as-needed"],
+    "no-empty": false,
     "member-access": false,
     "ordered-imports": false,
     "no-submodule-imports": false,
