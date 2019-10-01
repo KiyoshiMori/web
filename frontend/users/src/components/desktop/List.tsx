@@ -2,13 +2,17 @@ import React, { Fragment } from 'react'
 import { injectIntl, InjectedIntl } from 'react-intl'
 import { Column, Layout, Row } from '@ui/layout'
 import { Space, Text } from '@ui/text'
+import { ClickWrapper } from '@ui/helpers'
 import messages from '../../messages'
+import { RowType, SortTypes } from '../../reducers/list'
 
 interface Props {
   intl: InjectedIntl
+  rows: RowType[]
+  onSort: (sortBy: SortTypes) => void
 }
 
-const List = ({ rows, intl }: Props) => (
+const List = ({ rows, onSort, intl }: Props) => (
   <Column>
     <Layout basis={60} />
     <Row>
@@ -23,24 +27,32 @@ const List = ({ rows, intl }: Props) => (
       <Layout basis='10%' />
       <Layout basis={300}>
         <Layout basis={8} />
-        <Text size='s' weight='bold' transform='uppercase'>
-          {intl.formatMessage(messages.name)}
-        </Text>
+        <ClickWrapper onClick={onSort('name')}>
+          <Text size='s' weight='bold' transform='uppercase'>
+            {intl.formatMessage(messages.name)}
+          </Text>
+        </ClickWrapper>
       </Layout>
       <Layout basis={200}>
-        <Text size='s' weight='bold' transform='uppercase'>
-          {intl.formatMessage(messages.email)}
-        </Text>
+        <ClickWrapper onClick={onSort('email')}>
+          <Text size='s' weight='bold' transform='uppercase'>
+            {intl.formatMessage(messages.email)}
+          </Text>
+        </ClickWrapper>
       </Layout>
       <Layout basis={180}>
-        <Text size='s' weight='bold' transform='uppercase'>
-          {intl.formatMessage(messages.registered)}
-        </Text>
+        <ClickWrapper onClick={onSort('registrated')}>
+          <Text size='s' weight='bold' transform='uppercase'>
+            {intl.formatMessage(messages.registered)}
+          </Text>
+        </ClickWrapper>
       </Layout>
       <Layout basis={160}>
-        <Text size='s' weight='bold' transform='uppercase'>
-          {intl.formatMessage(messages.lastLogin)}
-        </Text>
+        <ClickWrapper onClick={onSort('lastLogin')}>
+          <Text size='s' weight='bold' transform='uppercase'>
+            {intl.formatMessage(messages.lastLogin)}
+          </Text>
+        </ClickWrapper>
       </Layout>
       <Layout basis='10%' />
     </Row>
