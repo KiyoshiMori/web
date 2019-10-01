@@ -27,6 +27,10 @@ export default defineMessages({
     id: `${namespace}.edit`,
     defaultMessage: 'Редактировать',
   },
+  cancel: {
+    id: `${namespace}.cancel`,
+    defaultMessage: 'Отмена'
+  },
   save: {
     id: `${namespace}.save`,
     defaultMessage: 'Сохранить',

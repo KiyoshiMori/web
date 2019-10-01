@@ -19,7 +19,8 @@ const Profile = ({
   onChangeLastName,
   isEditing,
   onEditClick,
-  onSaveClick
+  onSaveClick,
+  onCancelEditingClick
 }: Props) => (
     <Column align='center'>
         <Layout basis={60} />
@@ -87,11 +88,20 @@ const Profile = ({
           <Layout basis={360}>
             <Button
               text
-              disabled={!firstName || !lastName}
+              disabled={isEditing ? (!firstName || !lastName) : false}
               onClick={isEditing ? onSaveClick : onEditClick}
+              color={isEditing ? 'green' : undefined}
             >
               {isEditing ? intl.formatMessage(messages.save) : intl.formatMessage(messages.edit)}
             </Button>
+            {isEditing && (
+              <Button
+                text
+                onClick={onCancelEditingClick}
+              >
+                {intl.formatMessage(messages.cancel)}
+              </Button>
+            )}
           </Layout>
         </Row>
     </Column>

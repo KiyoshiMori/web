@@ -12,6 +12,7 @@ export interface ButtonProps extends ButtonUiProps {
   children?: ReactNode
   onClick?: () => void
   type?: 'button' | 'reset' | 'submit'
+  color?: 'orange' | 'green'
 }
 
 const ButtonUi = styled('button')<ButtonUiProps>(

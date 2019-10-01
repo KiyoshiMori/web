@@ -8,6 +8,7 @@ const colors = {
   ebony: '#293246',
   red: '#F15151',
   orange: '#FFA800',
+  green: '#8bc34a',
 }
 
 export default colors

@@ -32,5 +32,6 @@ export default createReducer(initialState, {
   [actions.update]: (state, { user }) => ({
     ...state,
     me: user
-  })
+  }),
+  [actions.clear]: () => initialState
 })

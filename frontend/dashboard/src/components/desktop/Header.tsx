@@ -16,12 +16,16 @@ interface Props {
 const Header = ({ firstName, lastName, intl, onLogout }: Props) => (
   <HeaderBase>
     <Layout basis='10%' />
+    <RouteLink to='/' color='ebony' hoverColor='lightGray'>
+      Главная
+    </RouteLink>
+    <Layout grow={1} />
     <RouteLink to='/profile' color='ebony' hoverColor='lightGray'>
       {firstName}
       <Space />
       {lastName}
     </RouteLink>
-    <Layout grow={1} />
+    <Layout basis='1%' />
     <Link onClick={onLogout} size='s' weight='medium' hoverColor='blueBayoux'>
       {intl.formatMessage(messages.exit)}
     </Link>

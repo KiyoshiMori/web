@@ -4,10 +4,10 @@ import { ifProp } from 'styled-tools'
 import ButtonUi, { ButtonProps } from './Button'
 
 const Orange = styled(ButtonUi)<ButtonProps>(
-  ({ theme }) => ({
+  ({ theme, color = 'orange' }) => ({
     color: theme.colors.white,
-    border: `1px solid ${theme.colors.orange}`,
-    backgroundColor: theme.colors.orange,
+    border: `1px solid ${theme.colors[color]}`,
+    backgroundColor: theme.colors[color],
     boxShadow: '0 2px 4px 0 rgba(255, 168, 0, 0.3)',
     transition: 'ease-in 150ms',
   }),
