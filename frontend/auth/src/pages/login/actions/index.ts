@@ -8,8 +8,8 @@ export const change = (field, value) => ({
   value,
 })
 
-export const login = () => async (dispatch, getState, client) => {
-  const { email, password } = getState().auth.login
+export const login = ({ afterReg }: { afterReg?: boolean } = {}) => async (dispatch, getState, client) => {
+  const { email, password } = afterReg ? getState().auth.registration : getState().auth.login
 
   try {
     const { data } = await client.query({
@@ -33,15 +33,35 @@ export const login = () => async (dispatch, getState, client) => {
         password,
       },
     })
-  } catch (e) {
-    dispatch({
-      type: auth,
-      token: stub.token,
-      expiresIn: stub.expiresIn,
-    })
+
+    if (data.login.errors) {
+      dispatch({
+        type: actions.setErrors,
+        errors: data.login.errors,
+      })
+    } else {
+      dispatch({
+        type: actions.clear,
+      })
+    }
+
+    const { token, expiresIn } = data.login.token
 
     dispatch({
-      type: actions.clear,
+      type: auth,
+      token,
+      expiresIn,
     })
+
+  } catch (e) {
+    // mock:
+    // dispatch({
+    //   type: auth,
+    //   token: stub.token,
+    //   expiresIn: stub.expiresIn,
+    // })
+    // dispatch({
+    //   type: actions.clear,
+    // })
   }
 }

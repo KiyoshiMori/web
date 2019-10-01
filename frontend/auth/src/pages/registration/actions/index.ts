@@ -1,6 +1,7 @@
 import gql from 'graphql-tag'
 import { auth, stub } from '@aunited/common/src/constants/security'
 import * as actions from '../constants'
+import { login } from '../../login/actions'
 
 export const change = (field, value) => ({
   type: actions.change,
@@ -30,25 +31,34 @@ export const register = () => async (dispatch, getState, client) => {
             },
         },
     })
+
     if (data.register.errors) {
         dispatch({
             type: actions.setErrors,
             errors: data.register.errors,
         })
     } else {
-        dispatch({
-            type: actions.clear,
-        })
+        dispatch(login({ afterReg: true }))
+        // dispatch({
+        //   type: actions.clear,
+        // })
     }
-  } catch (e) {
-    dispatch({
-        type: auth,
-        token: stub.token,
-        expiresIn: stub.expiresIn,
-    })
 
+  } catch (e) {
+    // mock:
+    // dispatch({
+    //     type: auth,
+    //     token: stub.token,
+    //     expiresIn: stub.expiresIn,
+    // })
+    // dispatch({
+    //     type: actions.clear,
+    // })
     dispatch({
-        type: actions.clear,
+      type: actions.setErrors,
+      errors: {
+        registration: true,
+      }
     })
   }
 }

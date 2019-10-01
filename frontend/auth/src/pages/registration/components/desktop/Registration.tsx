@@ -107,6 +107,18 @@ const Registration = ({
     >
       {intl.formatMessage(messages.login)}
     </RouteLink>
+    {errors.registration && (
+      <>
+        <Layout basis={16} />
+        <Row justify='center'>
+          <Layout basis={360} justifyContent='center'>
+            <Text color='red'>
+              {intl.formatMessage(messages.queryError)}
+            </Text>
+          </Layout>
+        </Row>
+      </>
+    )}
   </Column>
 )
 

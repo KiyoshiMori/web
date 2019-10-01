@@ -35,4 +35,8 @@ export default defineMessages({
     id: `${namespace}.login.login`,
     defaultMessage: 'Войти',
   },
+  queryError: {
+    id: `${namespace}.query_error`,
+    defaultMessage: 'Что-то пошло не так'
+  }
 })
