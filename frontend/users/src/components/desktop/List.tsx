@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { injectIntl, InjectedIntl } from 'react-intl'
 import { Column, Layout, Row } from '@ui/layout'
 import { Space, Text } from '@ui/text'
-import { ClickWrapper } from '@ui/helpers'
+import { ClickWrapper, SortArrow } from '@ui/helpers'
 import { Select } from '@ui/select'
 import messages from '../../messages'
 import { RowType, SortTypes } from '../../reducers/list'
@@ -26,7 +26,7 @@ const List = ({ rows, onSort, sortBy, intl }: Props) => (
       <Layout basis='10%' />
       <Layout basis='64%' justifyContent='flex-end'>
         <Select
-          selectedOption={sortBy}
+          selectedOption={sortBy[0]}
           options={sortOptions.map(el => ({ value: el[1], label: el[0] }))}
           placeholder='Сортировать по..'
           onChange={value => onSort(value)()}
@@ -41,6 +41,7 @@ const List = ({ rows, onSort, sortBy, intl }: Props) => (
         <ClickWrapper onClick={onSort('name')}>
           <Text size='s' weight='bold' transform='uppercase'>
             {intl.formatMessage(messages.name)}
+            <SortArrow sortBy={sortBy} sort='name' />
           </Text>
         </ClickWrapper>
       </Layout>
@@ -48,6 +49,7 @@ const List = ({ rows, onSort, sortBy, intl }: Props) => (
         <ClickWrapper onClick={onSort('email')}>
           <Text size='s' weight='bold' transform='uppercase'>
             {intl.formatMessage(messages.email)}
+            <SortArrow sortBy={sortBy} sort='email' />
           </Text>
         </ClickWrapper>
       </Layout>
@@ -55,6 +57,7 @@ const List = ({ rows, onSort, sortBy, intl }: Props) => (
         <ClickWrapper onClick={onSort('registrated')}>
           <Text size='s' weight='bold' transform='uppercase'>
             {intl.formatMessage(messages.registered)}
+            <SortArrow sortBy={sortBy} sort='registrated' />
           </Text>
         </ClickWrapper>
       </Layout>
@@ -62,6 +65,7 @@ const List = ({ rows, onSort, sortBy, intl }: Props) => (
         <ClickWrapper onClick={onSort('lastLogin')}>
           <Text size='s' weight='bold' transform='uppercase'>
             {intl.formatMessage(messages.lastLogin)}
+            <SortArrow sortBy={sortBy} sort='lastLogin' />
           </Text>
         </ClickWrapper>
       </Layout>

@@ -13,7 +13,7 @@ const enhance = lifecycle({
 export default connect(
   state => ({
     rows: state.users.list.rows,
-    sortBy: state.users.list.sortBy[0]
+    sortBy: state.users.list.sortBy,
   }),
   dispatch => ({
     onLoad: () => dispatch(load()),

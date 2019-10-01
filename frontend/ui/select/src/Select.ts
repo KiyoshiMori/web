@@ -1,11 +1,11 @@
-import { ReactNode, createElement } from 'react'
+import { createElement } from 'react'
 import Select from 'react-select'
-import { Input } from '@ui/input'
 
 export interface SelectUiProps {}
 
 export interface SelectProps extends SelectUiProps {
   selectedOption: string
+  onChange: (value: string) => void
 }
 
 export default ({

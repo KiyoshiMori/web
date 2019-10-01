@@ -10,7 +10,7 @@ export interface RowType {
   }
 }
 
-export type SortTypes = 'name' | null
+export type SortTypes = 'name' | 'email' | 'registrated' | 'lastLogin' | null
 
 interface IList {
   rows: RowType[]

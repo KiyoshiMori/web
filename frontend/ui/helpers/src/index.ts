@@ -1,3 +1,4 @@
 import ClickWrapper from './Wrapper'
+import SortArrow from './SortArrow'
 
-export { ClickWrapper }
+export { ClickWrapper, SortArrow }
