@@ -15,8 +15,8 @@ export default createReducer(initialState, {
     ...state,
     ...user,
     profile: {
-      ...state.profile,
-      ...user.profile
+      firstName: user.profile ? user.profile.firstName : '',
+      lastName: user.profile ? user.profile.lastName : ''
     }
   }),
   [actions.clear]: () => initialState,
