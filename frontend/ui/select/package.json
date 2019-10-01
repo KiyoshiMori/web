@@ -1,0 +1,10 @@
+{
+  "name": "@ui/select",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "src/index.ts",
+  "dependencies": {
+    "@types/react-select": "^3.0.5",
+    "react-select": "^3.0.7"
+  }
+}

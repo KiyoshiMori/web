@@ -3,16 +3,19 @@ import { injectIntl, InjectedIntl } from 'react-intl'
 import { Column, Layout, Row } from '@ui/layout'
 import { Space, Text } from '@ui/text'
 import { ClickWrapper } from '@ui/helpers'
+import { Select } from '@ui/select'
 import messages from '../../messages'
 import { RowType, SortTypes } from '../../reducers/list'
+import { sortOptions } from '../../constants/list'
 
 interface Props {
   intl: InjectedIntl
   rows: RowType[]
   onSort: (sortBy: SortTypes) => void
+  sortBy: SortTypes
 }
 
-const List = ({ rows, onSort, intl }: Props) => (
+const List = ({ rows, onSort, sortBy, intl }: Props) => (
   <Column>
     <Layout basis={60} />
     <Row>
@@ -21,6 +24,14 @@ const List = ({ rows, onSort, intl }: Props) => (
         {intl.formatMessage(messages.users)}
       </Text>
       <Layout basis='10%' />
+      <Layout basis='64%' justifyContent='flex-end'>
+        <Select
+          selectedOption={sortBy}
+          options={sortOptions.map(el => ({ value: el[1], label: el[0] }))}
+          placeholder='Сортировать по..'
+          onChange={value => onSort(value)()}
+        />
+      </Layout>
     </Row>
     <Layout basis={20} />
     <Row>
