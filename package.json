@@ -8,9 +8,9 @@
   ],
   "scripts": {
     "gateway:dev": "yarn workspace @backend/gateway dev",
+    "frontend:dev": "yarn workspace @frontend/dashboard dev",
     "typecheck": "lerna run typecheck",
-    "lint": "tslint --exclude node_modules --project tsconfig.json -c tslint.json -t codeFrame frontend/**/*.ts",
-    "frontend:dev": "yarn workspace @frontend/dashboard dev"
+    "lint": "tslint --exclude node_modules --project tsconfig.json -c tslint.json -t codeFrame frontend/**/*.ts"
   },
   "devDependencies": {
     "husky": "^2.4.1",
