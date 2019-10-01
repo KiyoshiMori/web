@@ -24,6 +24,11 @@ export const load = () => async (dispatch, getState, client) => {
         }
       `,
     })
+
+    dispatch({
+      type: actions.load,
+      list: data.users,
+    })
   } catch (e) {
     dispatch({
       type: actions.load,

@@ -4,8 +4,8 @@ import Header from '../../components/desktop/Header'
 
 export default connect(
   state => ({
-    firstName: state.me.profile.firstName,
-    lastName: state.me.profile.lastName,
+    firstName: state.me.profile.firstName || 'Profile',
+    lastName: state.me.profile.lastName || '',
   }),
   dispatch => ({
     onLogout: () => dispatch(logout()),

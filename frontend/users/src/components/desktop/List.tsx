@@ -52,9 +52,9 @@ const List = ({ rows, intl }: Props) => (
           <Layout basis={8} />
           <Layout basis={280}>
             <Text size='s'>
-              {profile.firstName}
+              {profile ? profile.firstName : 'None'}
               <Space />
-              {profile.lastName}
+              {profile ? profile.lastName : ''}
             </Text>
           </Layout>
           <Layout basis={12} />
