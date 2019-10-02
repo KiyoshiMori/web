@@ -86,23 +86,34 @@ const Profile = ({
         <Layout basis={24} />
         <Row justify='center'>
           <Layout basis={360}>
-            <Button
-              text
-              disabled={isEditing
-                ? (!firstName || !lastName) || (firstName.length < 4 || lastName.length < 4)
-                : false
-              }
-              onClick={isEditing ? onSaveClick : onEditClick}
-              color={isEditing ? 'green' : undefined}
-            >
-              {isEditing ? intl.formatMessage(messages.save) : intl.formatMessage(messages.edit)}
-            </Button>
-            {isEditing && (
+            {isEditing ? (
+              <>
+                <Button
+                  text
+                  disabled={(!firstName || !lastName) || (firstName.length < 4 || lastName.length < 4)}
+                  onClick={onSaveClick}
+                  color='green'
+                >
+                  {intl.formatMessage(messages.save) }
+                </Button>
+                <Button
+                  text
+                  onClick={onCancelEditingClick}
+                >
+                  {intl.formatMessage(messages.cancel)}
+                </Button>
+              </>
+            ) : (
               <Button
                 text
-                onClick={onCancelEditingClick}
+                disabled={isEditing
+                  ? (!firstName || !lastName) || (firstName.length < 4 || lastName.length < 4)
+                  : false
+                }
+                onClick={isEditing ? onSaveClick : onEditClick}
+                color={isEditing ? 'green' : undefined}
               >
-                {intl.formatMessage(messages.cancel)}
+                {intl.formatMessage(messages.edit)}
               </Button>
             )}
           </Layout>
