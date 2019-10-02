@@ -24,8 +24,13 @@ const initialState: IList = {
   sortBy: [null, 'DESC']
 }
 
+const flipSortDir = dir => dir === 'ASC' ? 'DESC' : 'ASC'
+
 export default createReducer(initialState, {
   [actions.load]: (state, { list }: { list: IList }) => ({ ...state, ...list }),
-  [actions.sort]: (state, { sortBy, rows }: { sortBy: SortTypes, rows: RowType[] }) => ({ ...state, rows, sortBy }),
+  [actions.sort]: (state, { newSortBy }: { sortBy: SortTypes, rows: RowType[] }) => ({
+    ...state,
+    sortBy: [newSortBy, newSortBy === state.sortBy[0] ? flipSortDir(state.sortBy[1]) : 'DESC']
+  }),
   [actions.clear]: () => initialState,
 })

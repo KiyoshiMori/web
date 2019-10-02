@@ -1,4 +1,4 @@
-import { connect } from 'react-redux'
+import { connect, getState } from 'react-redux'
 import { lifecycle } from 'recompose'
 import { load, sort } from '../../actions/list'
 import { SortTypes } from '../../reducers/list'
@@ -15,7 +15,7 @@ export default connect(
     rows: state.users.list.rows,
     sortBy: state.users.list.sortBy,
   }),
-  dispatch => ({
+  (dispatch, ownProps) => ({
     onLoad: () => dispatch(load()),
     onSort: (sortBy: SortTypes) => () => dispatch(sort(sortBy))
   })

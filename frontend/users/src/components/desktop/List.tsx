@@ -15,6 +15,29 @@ interface Props {
   sortBy: SortTypes
 }
 
+const sort = ([sortBy, sortDir]: [SortTypes, 'ASC' | 'DESC']) => (a, b) => {
+  let index = 0
+
+  if (sortBy === 'name') {
+    if (a.profile && b.profile) {
+      const aConnectedName = a.profile.firstName + a.profile.lastName
+      const bConnectedName = b.profile.firstName + b.profile.lastName
+      return aConnectedName.localeCompare(bConnectedName)
+    }
+    index = a.profile === null ? 1 : -1
+  }
+
+  if (sortBy === 'email') {
+    index = a[sortBy].localeCompare(b[sortBy])
+  }
+
+  if (index !== 0 && sortDir === 'ASC') {
+    index *= -1
+  }
+
+  return index
+}
+
 const List = ({ rows, onSort, sortBy, intl }: Props) => (
   <Column>
     <Layout basis={60} />
@@ -72,7 +95,7 @@ const List = ({ rows, onSort, sortBy, intl }: Props) => (
       <Layout basis='10%' />
     </Row>
     <Layout basis={8} />
-    {rows.map(({ id, profile, email, registeredAt, lastLogonAt }) => (
+    {rows.sort(sort(sortBy)).map(({ id, profile, email, registeredAt, lastLogonAt }) => (
       <Fragment key={id}>
         <Row>
           <Layout basis='10%' />
