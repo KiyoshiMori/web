@@ -1,11 +1,8 @@
 import webpack from 'webpack'
 import path from 'path'
-import dotenv from 'dotenv'
 import autoprefixer from 'autoprefixer'
 import htmlTemplate from 'html-webpack-template'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-
-const dotenvValues = dotenv.config({ path: path.resolve(__dirname, '../../../../.env') })
 
 export const mode = 'development'
 
@@ -87,7 +84,7 @@ export const plugins = [
   }),
   new webpack.DefinePlugin({
     'process.env': {
-      API_URL: JSON.stringify(dotenvValues.parsed.API_URL)
+      API_URL: JSON.stringify(process.env.API_URL)
     }
   }),
 ]

@@ -26,19 +26,6 @@ export const init = () => async (dispatch, getState, client) => {
       user: data.me
     })
   } catch (e) {
-    // mock:
-    // const stub = {
-    //   id: 1,
-    //   email: 'crockford@lmao.com',
-    //   profile: {
-    //     firstName: 'Дуглас',
-    //     lastName: 'Крокфорд',
-    //   },
-    // }
-    // dispatch({
-    //   type: actions.load,
-    //   user: stub,
-    // })
   }
 }
 

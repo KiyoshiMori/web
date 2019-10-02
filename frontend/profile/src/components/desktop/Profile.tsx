@@ -88,7 +88,10 @@ const Profile = ({
           <Layout basis={360}>
             <Button
               text
-              disabled={isEditing ? (!firstName || !lastName) : false}
+              disabled={isEditing
+                ? (!firstName || !lastName) || (firstName.length < 4 || lastName.length < 4)
+                : false
+              }
               onClick={isEditing ? onSaveClick : onEditClick}
               color={isEditing ? 'green' : undefined}
             >

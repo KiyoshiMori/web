@@ -54,14 +54,5 @@ export const login = ({ afterReg }: { afterReg?: boolean } = {}) => async (dispa
     })
 
   } catch (e) {
-    // mock:
-    // dispatch({
-    //   type: auth,
-    //   token: stub.token,
-    //   expiresIn: stub.expiresIn,
-    // })
-    // dispatch({
-    //   type: actions.clear,
-    // })
   }
 }

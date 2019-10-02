@@ -1,13 +1,6 @@
 import { createElement } from 'react'
 import Select from 'react-select'
 
-// export interface SelectUiProps {}
-
-// export interface SelectProps extends SelectUiProps {
-//   selectedOption: string
-//   onChange: (value: string) => void
-// }
-
 export default ({
   selectedOption,
   onChange,

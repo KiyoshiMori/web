@@ -39,21 +39,9 @@ export const register = () => async (dispatch, getState, client) => {
         })
     } else {
         dispatch(login({ afterReg: true }))
-        // dispatch({
-        //   type: actions.clear,
-        // })
     }
 
   } catch (e) {
-    // mock:
-    // dispatch({
-    //     type: auth,
-    //     token: stub.token,
-    //     expiresIn: stub.expiresIn,
-    // })
-    // dispatch({
-    //     type: actions.clear,
-    // })
     dispatch({
       type: actions.setErrors,
       errors: {
